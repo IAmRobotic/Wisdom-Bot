@@ -20,26 +20,31 @@ st.markdown(
     "##### All responses derived via AI RAG techniques from the text of Meditations by Marcus Aurelius and the Tao Te Ching."
 )
 
+
 # Initialize the chatbot in the session state
 if "chatbot" not in st.session_state:
     st.session_state.chatbot = GuruChatbot(
-        openai_api_key=os.getenv("OPENAI_API_KEY"),
-        google_api_key=os.getenv("GOOGLE_API_KEY"),
-        qdrant_url=os.getenv("QDRANT_URL"),
-        qdrant_api_key=os.getenv("QDRANT_API_KEY"),
+        openai_api_key=st.secrets.get("OPENAI_API_KEY"),
+        google_api_key=st.secrets.get("GOOGLE_API_KEY"),
+        qdrant_url=st.secrets.get("QDRANT_URL"),
+        qdrant_api_key=st.secrets.get("QDRANT_API_KEY"),
     )
 
 # Initialize messages in the session state
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
+
 # Display existing messages
 for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
 
+
 # Handle user input
 if prompt := st.chat_input("Unburden your mind. What's troubling you?"):
+    # Clear the example question after it's used
+    st.session_state.example_question = ""
     # Add user message to the state
     st.session_state.messages.append({"role": "user", "content": prompt})
     # Display user message
@@ -63,7 +68,15 @@ if prompt := st.chat_input("Unburden your mind. What's troubling you?"):
             if meditations_quote != "NONE" and meditations_quote != None:
                 st.markdown("#### Quote from Meditations:")
                 st.markdown(meditations_quote.strip())
-            session_content = f"{response}\n\n#### Quote from Tao Te Ching:\n{tao_quote}\n\n#### Quote from Meditations:\n{meditations_quote}"
+
+            # updates history of responses
+            if (tao_quote != "NONE" and tao_quote != None) or (
+                meditations_quote != "NONE" and meditations_quote != None
+            ):
+                session_content = f"{response}\n\n#### Quote from Tao Te Ching:\n{tao_quote}\n\n#### Quote from Meditations:\n{meditations_quote}"
+            else:
+                session_content = response
+
             st.session_state.messages.append(
                 {"role": "assistant", "content": session_content}
             )
