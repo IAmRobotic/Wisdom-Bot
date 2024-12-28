@@ -55,11 +55,6 @@ The application uses:
 - Qdrant as the vector database
 - Gemini text-embedding-004 for embedding the original texts as well as user queries
 
-
-## License 📄
-
-This project is under the MIT License. See [LICENSE](LICENSE) for details.
-
 ---
 
-Built with Python, LlamaIndex, and ancient wisdom ✨
+Built with Python, LlamaIndex, Streamlit and ancient wisdom ✨
