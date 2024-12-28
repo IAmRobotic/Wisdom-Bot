@@ -70,7 +70,7 @@ pillow==11.0.0
 portalocker==2.10.1
 propcache==0.2.1
 proto-plus==1.25.0
-protobuf==4.25.5
+protobuf
 pyasn1==0.6.1
 pyasn1_modules==0.4.1
 pydantic==2.10.4
