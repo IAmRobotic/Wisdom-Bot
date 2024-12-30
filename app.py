@@ -15,9 +15,19 @@ if os.path.exists(".streamlit/config.toml"):
         initial_sidebar_state="expanded",
     )
 
-st.title("Wisdom Bot: Timeless insights powered by AI")
+# st.title("Wisdom Bot: Timeless insights powered by AI")
 st.markdown(
-    "##### All responses derived via AI RAG techniques from the text of Meditations by Marcus Aurelius and the Tao Te Ching."
+    '<h1 style="color:#06BFAD;">Wisdom Bot: Timeless insights powered by AI</h1>',
+    unsafe_allow_html=True,
+)
+st.markdown(
+    "<h5>All responses derived via AI RAG techniques from text of Meditations by Marcus Aurelius and the Tao Te Ching.</h5>",
+    unsafe_allow_html=True,
+)
+
+st.markdown(
+    '<h6 style="color:#9FD4D3;"> Instructions: try a question like "My son is struggling with grades at school. How can I help him?</h6>',
+    unsafe_allow_html=True,
 )
 
 
