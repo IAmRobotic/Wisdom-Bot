@@ -17,16 +17,16 @@ if os.path.exists(".streamlit/config.toml"):
 
 # st.title("Wisdom Bot: Timeless insights powered by AI")
 st.markdown(
-    '<h1 style="color:#06BFAD;">Wisdom Bot: Timeless insights powered by AI</h1>',
+    '<h2 style="color:#7763fb;">Wisdom Bot: Timeless insights powered by AI</h2>',
     unsafe_allow_html=True,
 )
 st.markdown(
-    "<h5>All responses derived via AI RAG techniques from text of Meditations by Marcus Aurelius and the Tao Te Ching.</h5>",
+    "<h5 style='color:#72F1B8;'>All responses derived via AI RAG techniques from text of Meditations by Marcus Aurelius and the Tao Te Ching.</h5>",
     unsafe_allow_html=True,
 )
 
 st.markdown(
-    '<h6 style="color:#9FD4D3;"> Instructions: try a question like "My son is struggling with grades at school. How can I help him?</h6>',
+    '<h6><i> Instructions: try a question like "How can I be a better father?</i></h6>',
     unsafe_allow_html=True,
 )
 
@@ -83,7 +83,7 @@ if prompt := st.chat_input("Unburden your mind. What's troubling you?"):
             if (tao_quote != "NONE" and tao_quote != None) or (
                 meditations_quote != "NONE" and meditations_quote != None
             ):
-                session_content = f"{response}\n\n#### Quote from Tao Te Ching:\n{tao_quote}\n\n#### Quote from Meditations:\n{meditations_quote}"
+                session_content = f"{response}\n\n##### Quote from Tao Te Ching:\n{tao_quote}\n\n##### Quote from Meditations:\n{meditations_quote}"
             else:
                 session_content = response
 
