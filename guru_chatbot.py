@@ -76,7 +76,7 @@ class GuruChatbot:
     def genai_model(self):
         if self._genai_model is None:
             genai.configure(api_key=self.google_api_key)
-            self._genai_model = genai.GenerativeModel("gemini-1.5-flash")
+            self._genai_model = genai.GenerativeModel("gemini-2.0-flash")
         return self._genai_model
 
     @property

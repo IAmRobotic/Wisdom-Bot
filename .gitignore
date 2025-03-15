@@ -3,3 +3,8 @@ secrets.toml
 .env
 *.log
  
+# Python
+__pycache__/
+*.py[cod]
+__pycache__/guru_chatbot.cpython-311.pyc
+__pycache__/prompts.cpython-311.pyc
